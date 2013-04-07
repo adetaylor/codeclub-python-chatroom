@@ -14,13 +14,13 @@ uri = daemon.register(me)
 room.add_participant(uri)
 
 def run_daemon():
-  daemon.requestLoop()
+	daemon.requestLoop()
 
 t = threading.Thread(target=run_daemon)
 t.daemon = True
 t.start()
 
 while True:
-  text = raw_input("Enter your message: ").strip()
-  message = Message(text)
-  me.say(message)
+	text = raw_input("Enter your message: ").strip()
+	message = Message(text)
+	me.say(message)
