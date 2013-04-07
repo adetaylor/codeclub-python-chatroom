@@ -11,7 +11,7 @@ class Participant:
 		self.room.say(message)
 	
 	def heard(self, message):
-		print message.get_message_text() + "\n"
+		print message.get_username() + ": " + message.get_message_text() + "\n"
 
 sys.excepthook=Pyro4.util.excepthook
 room=Pyro4.Proxy("PYRONAME:example.room")
@@ -20,11 +20,13 @@ me=Participant(room)
 uri = daemon.register(me)
 room.add_participant(uri)
 
+username = raw_input("What's your username?")
+
 t = threading.Thread(target=lambda: daemon.requestLoop())
 t.daemon = True
 t.start()
 
 while True:
 	text = raw_input().strip()
-	message = Message(text)
+	message = Message(text, username)
 	me.say(message)
