@@ -12,9 +12,9 @@ class Room:
 			p.heard(message_text)
 
 room = Room()
-Pyro4.Daemon.serveSimple(
-  {
-    room: "example.room"
-  },
-  ns=True)
-	
+
+daemon = Pyro4.Daemon()
+ns = Pyro4.locateNS()
+uri = daemon.register(room)
+ns.register("example.room", uri)
+daemon.requestLoop()
