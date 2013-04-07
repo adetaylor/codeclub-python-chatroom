@@ -7,9 +7,9 @@ class Room:
 	def add_participant(self, participant):
 		self.participants.append(Pyro4.Proxy(participant))
 
-	def say(self, msg):
+	def say(self, message_text):
 		for p in self.participants:
-			p.heard(msg)
+			p.heard(message_text)
 
 room = Room()
 Pyro4.Daemon.serveSimple(
@@ -17,3 +17,4 @@ Pyro4.Daemon.serveSimple(
     room: "example.room"
   },
   ns=True)
+	

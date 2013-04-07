@@ -4,7 +4,12 @@ from participant import Participant
 
 room = Room()
 janet = Participant(room)
+room.add_participant(janet)
 john = Participant(room)
+room.add_participant(john)
 fred = Participant(room)
+room.add_participant(fred)
 
-janet.say("Hello everyone!")
+first_message = Message("Hello everyone!")
+
+janet.say(first_message)
