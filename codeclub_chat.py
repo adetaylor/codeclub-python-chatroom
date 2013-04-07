@@ -1,6 +1,5 @@
 import sys
 import Pyro4
-import select
 import threading
 from participant import Participant
 from message import Message 
@@ -12,10 +11,7 @@ me=Participant(room)
 uri = daemon.register(me)
 room.add_participant(uri)
 
-def run_daemon():
-	daemon.requestLoop()
-
-t = threading.Thread(target=run_daemon)
+t = threading.Thread(target=lambda: daemon.requestLoop())
 t.daemon = True
 t.start()
 
