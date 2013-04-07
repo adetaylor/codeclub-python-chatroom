@@ -3,6 +3,8 @@ import Pyro4
 import threading
 from message import Message
 
+username = raw_input("What's your username?")
+
 class Participant:
 	def __init__(self, room):
 		self.room = room
@@ -19,8 +21,6 @@ daemon = Pyro4.Daemon()
 me=Participant(room)
 uri = daemon.register(me)
 room.add_participant(uri)
-
-username = raw_input("What's your username?")
 
 t = threading.Thread(target=lambda: daemon.requestLoop())
 t.daemon = True
