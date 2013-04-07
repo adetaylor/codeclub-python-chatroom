@@ -7,7 +7,6 @@ from message import Message
 
 sys.excepthook=Pyro4.util.excepthook
 room=Pyro4.Proxy("PYRONAME:example.room")
-room._pyroOneway.add("say")
 daemon = Pyro4.Daemon()
 me=Participant(room)
 uri = daemon.register(me)
@@ -21,6 +20,6 @@ t.daemon = True
 t.start()
 
 while True:
-	text = raw_input("Enter your message: ").strip()
+	text = raw_input().strip()
 	message = Message(text)
 	me.say(message)
