@@ -3,8 +3,8 @@ class Participant:
 		self.room = room
 		self.room.add_participant(self)
 	
-	def say(self, msg):
-		self.room.say(msg)
+	def say(self, message):
+		self.room.say(message)
 	
-	def heard(self, msg):
-		print msg + "\n"
+	def heard(self, message):
+		print message.get_message_text() + "\n"

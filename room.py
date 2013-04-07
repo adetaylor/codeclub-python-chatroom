@@ -5,6 +5,6 @@ class Room:
 	def add_participant(self, participant):
 		self.participants.append(participant)
 	
-	def say(self, msg):
+	def say(self, message_text):
 		for p in self.participants:
-			p.heard(msg)
+			p.heard(message_text)
