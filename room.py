@@ -17,4 +17,5 @@ daemon = Pyro4.Daemon()
 ns = Pyro4.locateNS()
 uri = daemon.register(room)
 ns.register("example.room", uri)
+print "Chat room available and ready for connections!\n"
 daemon.requestLoop()
