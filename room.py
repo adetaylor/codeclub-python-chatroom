@@ -13,7 +13,7 @@ class Room:
 
 room = Room()
 
-daemon = Pyro4.Daemon()
+daemon = Pyro4.Daemon(host=Pyro4.socketutil.getInterfaceAddress("www.google.com"))
 ns = Pyro4.locateNS()
 uri = daemon.register(room)
 ns.register("example.room", uri)
