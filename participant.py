@@ -17,7 +17,7 @@ class Participant:
 
 sys.excepthook=Pyro4.util.excepthook
 room=Pyro4.Proxy("PYRONAME:example.room")
-daemon = Pyro4.Daemon()
+daemon = Pyro4.Daemon(host=Pyro4.socketutil.getInterfaceAddress("www.google.com"))
 me=Participant(room)
 uri = daemon.register(me)
 room.add_participant(uri)
