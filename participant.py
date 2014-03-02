@@ -3,7 +3,7 @@ import Pyro4
 import threading
 from message import Message
 
-username = raw_input("What's your username?")
+username = input("What's your username?")
 
 class Participant:
 	def __init__(self, room):
@@ -13,8 +13,8 @@ class Participant:
 		self.room.say(message)
 	
 	def heard(self, message):
-	  if not message.get_username() == username:
-			print message.get_username() + ": " + message.get_message_text() + "\n"
+		if not message.get_username() == username:
+			print(message.get_username() + ": " + message.get_message_text() + "\n")
 
 sys.excepthook=Pyro4.util.excepthook
 room=Pyro4.Proxy("PYRONAME:example.room")
@@ -28,6 +28,6 @@ t.daemon = True
 t.start()
 
 while True:
-	text = raw_input().strip()
+	text = input().strip()
 	message = Message(text, username)
 	me.say(message)

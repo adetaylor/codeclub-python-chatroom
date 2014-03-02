@@ -17,5 +17,5 @@ daemon = Pyro4.Daemon(host=Pyro4.socketutil.getInterfaceAddress("www.google.com"
 ns = Pyro4.locateNS()
 uri = daemon.register(room)
 ns.register("example.room", uri)
-print "Chat room available and ready for connections!\n"
+print("Chat room available and ready for connections!\n")
 daemon.requestLoop()
